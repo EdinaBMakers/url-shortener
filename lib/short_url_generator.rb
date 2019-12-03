@@ -7,6 +7,17 @@ class ShortUrlGenerator
     @available_short_urls = generate_short_urls
   end
 
+  def get_short_url
+    if @available_short_urls.empty?
+      @current_short_url_length += 1
+      @available_short_urls = generate_short_urls
+    end
+
+    @available_short_urls.shift
+  end
+
+  private
+
   def generate_short_urls
     short_urls = @valid_chars.dup
 
@@ -17,14 +28,5 @@ class ShortUrlGenerator
     end
 
     short_urls.map {|chars| chars.flatten.join}
-  end
-
-  def get_short_url
-    if @available_short_urls.empty?
-      @current_short_url_length += 1
-      @available_short_urls = generate_short_urls
-    end
-
-    @available_short_urls.shift
   end
 end
