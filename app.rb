@@ -5,6 +5,7 @@ require './lib/short_url_generator'
 class UrlShortener < Sinatra::Base
   short_url_generator = ShortUrlGenerator.new
   short_url_by_original_url = {}
+  original_url_by_short_url = {}
 
   post '/' do
     original_url = JSON.parse(request.body.read)["url"]
@@ -19,6 +20,10 @@ class UrlShortener < Sinatra::Base
   end
 
   get '/:short_url' do
-
+    short_url = params[:short_url]
+    
+    if original_url_by_short_url[short_url] == nil
+      status 404
+    end 
   end
 end
