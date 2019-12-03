@@ -14,6 +14,7 @@ class UrlShortener < Sinatra::Base
     if short_url == nil
       short_url = short_url_generator.get_short_url
       short_url_by_original_url[original_url] = short_url
+      original_url_by_short_url[short_url] = original_url
     end
     
     JSON[{"short_url" => "/#{short_url}", "url" => original_url}]
@@ -21,9 +22,12 @@ class UrlShortener < Sinatra::Base
 
   get '/:short_url' do
     short_url = params[:short_url]
-    
-    if original_url_by_short_url[short_url] == nil
+    original_url = original_url_by_short_url[short_url]
+
+    if original_url == nil
       status 404
+    else
+      redirect original_url
     end 
   end
 end
