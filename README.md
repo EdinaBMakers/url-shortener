@@ -1,3 +1,52 @@
+# Url Shortener API
+
+## Description
+
+A Sinatra API for shortening the posted url and redirecting to the original url based on the given shortened url.
+
+
+## Getting Started
+
+1. Clone this repo to your local machine using git@github.com:EdinaBMakers/url-shortener.git
+2. Run gem install bundle (if it is not installed already)
+3. Run bundle
+4. Run `rackup -p <PORT>` 
+
+
+## Features Implemented
+
+```
+User can post url and receive the shortest available shortened url
+```
+
+```
+User can post the same url multiple times and receive the same shortened url
+```
+
+```
+User can post the same url with or without `http://` and receive the same shortened url
+```
+
+```
+User receives unique shortened urls when posting unique original urls
+```
+
+```
+User gets redirected to the original url when sending a get request with a known shortened url
+```
+
+```
+User receives 404 (Not Found) when sending a get request with an unknown shortened url 
+```
+
+
+## Testing
+
+Tests can be run from the root directory, using the `rspec` command.
+
+Both the short url generator component and the Sinatra API routes are tested with `Rspec` and `Rack::Test`.
+
+
 # Url Shortener Code Test
 
 Without using an external database, we'd like you to create a URL shortening
