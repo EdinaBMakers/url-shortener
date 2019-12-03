@@ -6,4 +6,6 @@ gem "rspec", "~> 3.9"
 
 gem "sinatra", "~> 2.0"
 
-gem 'rack', '~> 1.6', '>= 1.6.4'
+gem 'rack', '~> 2.0.7'
+
+gem 'rack-test', '~> 0.6.3'
